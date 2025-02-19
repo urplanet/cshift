@@ -1,4 +1,8 @@
-# optimizer จัด shift
+# prerequisites python library
+- ortools
+- matplotlib
+
+# description
 ตัว code อยู่ใน cardio_test.py
 ตอนนี้ที่ทำได้
 - กำหนดวันเวร วันห้ามเวร
@@ -6,6 +10,6 @@
 - balance load ระหว่าง เวรชื่อเดียว / เวรสองชื่อตำแหน่ง1 / เวรสองชื่อตำแหน่ง2 + balance การเข้าเวรวันธรรมดาและเวรวันหยุด
 - วันอังคารชื่อสองไม่ซ้ำ
 
-# required library
-- ortools
-- matplotlib
+วิธีการใช้ > กรอก config ทุกอย่างหลัง if __name__=="__main__": เป็นต้นไปตามต้องการแล้ว run 
+
+
