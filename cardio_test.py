@@ -3,10 +3,6 @@ import calendar
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-import calendar
-
 def plot_calendar_figure(year, month,
                          num_fdocs,
                          day_weekday,  # dict[d]->weekday(0=Mon..6=Sun)
@@ -514,14 +510,19 @@ def solve_fdoc_schedule_with_p0_p1_p2_and_prints(config):
 if __name__=="__main__":
     # Example usage
     config = {
+
+      #ระบุวัน เดือน จำนวน fellow (fdoc)
         'year':2025,
         'month':2,
         'num_fdocs':8,
 
-        # example ccu
-        'CCU_fdocs': [0],  # say doc #2 is the CCU doc => can't do p2 on Tuesday
+     #กำหนด ID สำหรับแต่ละชื่อ ถ้ามี 8 คนก็เป็นเลขจาก 0-7 
+     #ระบุว่า CCU_fdocs คือ fdoc id ไหน เช่นถ้าคน ID 0 ก็กรอก 0
+        'CCU_fdocs': [0],
+      #อันนี้ตอนแรกทำไว้เผื่อ fdoc on vacation
         'vaca_fdocs': [],
 
+      #กำหนดวันที่ fdoc แต่ละ id ห้ามเวร
         'fdoc_interruptions': {
             0:[28],
             1:[13,14,15,16,23,28],
@@ -532,6 +533,8 @@ if __name__=="__main__":
             6:[2,6,14,15,16,20],
             7:[6,13,14,15,16],
         },
+      
+      #กำหนดวันที่ fdoc แต่ละ id ต้องเวร หรือวันที่อยากเวร กรณีจัดมาเองแล้วอยากจะ optimize พาร์ทที่เหลือ
         'fdoc_fixations': {
 0: [1, 5, 11, 15, 19, 24],
 1: [3, 9, 12, 18, 21, 26],
@@ -542,14 +545,23 @@ if __name__=="__main__":
 6: [4, 8, 12, 21, 24, 27],
 7: [1, 4, 10, 20, 23, 28],
         },
+
+      #กำหนดจำนวน shift ของแต่ละ fdoc ที่ต้องทำต่อเดือน
         'desired_shifts_per_fdoc': {
             0:3,1:6,2:6,3:6,4:6,5:6,6:6,7:6,
         },
+
+      #ส่วนนี้ไม่ได้ใช้
         'fdoc_preferences': {
             # example usage
         },
+
+      #กำหนดวัน public holiday ของเดือนนั้น เพื่อที่จะ balance เวรในวันหยุด
         'pub_holiday':[12],
+
+      #กำหนดวันที่อยากให้มี fdoc เวรชื่อเดียว
         'one_fdoc_day':[14,15,16],
+      #กำหนดวันที่อยากให้มี fdoc เวรสองชื่อ นอกจากวันจันทร์ อังคาร และวันอาทิตย์
         'two_fdoc_day':[5,19,22],
     }
 
